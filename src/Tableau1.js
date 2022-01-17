@@ -58,6 +58,8 @@ class Tableau1 extends Phaser.Scene{
 
     update(){
 
+        
+
         if (this.Balle.x>this.largeur){
             this.Balle.x = 0
         }

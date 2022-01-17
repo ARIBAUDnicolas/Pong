@@ -17,8 +17,8 @@ class Tableau1 extends Phaser.Scene{
         this.Balle.setDisplaySize(20,20);
         this.Balle.body.setBounce(3,3);
         this.Balle.setVelocityX(Phaser.Math.Between( -200,200));
-        this.Balle.setVelocityY(Phaser.Math.Between( 0,0));
-        this.Balle.setMaxVelocity(500,500);
+        this.Balle.setVelocityY(Phaser.Math.Between( -50,50));
+        this.Balle.setMaxVelocity(400,400);
 
 
 
@@ -46,6 +46,19 @@ class Tableau1 extends Phaser.Scene{
         this.droite.setImmovable(true);
 
 
+        this.data.set('j1', 0);
+        this.data.set('j2', 0);
+
+        this.J1 = this.add.text(100, 30, '', { font: '40px Courier', fill: '#808080' });
+        this.J1.setText([
+            'J1: ' + this.data.get('j1')
+        ]);
+
+        this.J2 = this.add.text(800, 30, '', { font: '40px Courier', fill: '#808080' });
+        this.J2.setText([
+            'J2: ' + this.data.get('j2')
+        ]);
+
         let me = this;
 
         this.physics.add.collider(this.Balle,this.Bas);
@@ -69,6 +82,7 @@ class Tableau1 extends Phaser.Scene{
         console.log(raquette.y);
         console.log(me.Balle.y);
         console.log(me.Balle.y-raquette.y)
+
     }
 
     initKeyboard(){
@@ -92,16 +106,16 @@ class Tableau1 extends Phaser.Scene{
         this.input.keyboard.on('keydown', function (kevent) {
             switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.S:
-                    me.gauche.setVelocityY(-300);
+                    me.gauche.setVelocityY(-500);
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.J:
-                    me.droite.setVelocityY(-300);
+                    me.droite.setVelocityY(-500);
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.X:
-                    me.gauche.setVelocityY(300);
+                    me.gauche.setVelocityY(500);
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.N:
-                    me.droite.setVelocityY(300);
+                    me.droite.setVelocityY(500);
                     break;
             }
 
